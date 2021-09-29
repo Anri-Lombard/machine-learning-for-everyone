@@ -52,17 +52,18 @@ h_theta = sigmoid(z3);
 % recode the labels as vectors containing only 0 and 1
 y_new = zeros(num_labels, m);
 for i=1:m,
-    y_new(y(i), i) = 1;
+  y_new(y(i),i)=1;
 end
 
-J= (1/m) * sum(sum((y_new) .* log(h_theta) - (1-y_new) .* log(1-h_theta)));
+
+J = (1/m) * sum ( sum ( (-y_new) .* log(h_theta) - (1-y_new) .* log(1-h_theta) ));
 
 % no regularization of biasses (first collumns of matrices)
-t1 = Theta1(:, 2:size(Theta1, 2));
-t2 = Theta2(:, 2:size(Theta2, 2));
+t1 = Theta1(:,2:size(Theta1,2));
+t2 = Theta2(:,2:size(Theta2,2));
 
 % Regularize
-Reg = lambda * (sum(sum(t1 .^ 2)) + sum(sum(t2 .^ 2))) / (2 * m);
+Reg = lambda  * (sum( sum ( t1.^ 2 )) + sum( sum ( t2.^ 2 ))) / (2*m);
 
 % Regularize cost function
 J = J + Reg;
