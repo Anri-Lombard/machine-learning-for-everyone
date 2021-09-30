@@ -109,8 +109,8 @@ for t=1:m
     % 4th step
     delta_2 = delta_2(2:end);
 
-    Theta2_grad = Theta2_grad + delta_3 + a2';
-    Theta1_grad = Theta2_grad + delta_2 + a1';
+    Theta2_grad = Theta2_grad + delta_3 * a2';
+    Theta1_grad = Theta1_grad + delta_2 * a1';
 end
 
 % 5th step
@@ -132,12 +132,6 @@ Theta1_grad = (1/m) * Theta1_grad;
 % Regularize
 Theta1_grad(:, 2:end) = Theta1_grad(:, 2:end) + ((lambda/m) * Theta1(:, 2:end)); % j >= 1
 Theta2_grad(:, 2:end) = Theta2_grad(:, 2:end) + ((lambda/m) * Theta2(:, 2:end)); % j >= 1
-
-% unroll gradients
-grad = [Theta1_grad(:); Theta2_grad(:)];
-
-end
-
 
 
 
