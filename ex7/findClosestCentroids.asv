@@ -28,9 +28,7 @@ for i = 1:m
     for j = 1:k
         distance_array(1, j) = sqrt(sum(power((X(i,"")-centroids(j,:)), 2)));
     end
-    [~, idx] = min(distance_array);
-    idx(i, 1) = d_idx;
-end
+    [~d,]
 
 
 
